@@ -1,0 +1,41 @@
+server:
+    port: ${PORT_MS_CONFIG_SERVER:8888}
+
+spring:
+  application:
+    name: ms-config-server
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+            - classpath:/cloudConfigFiles
+        git:
+          uri: https://github.com/jardel978/backend-dmh-ms-config-server
+#          uri: file:///${user.home}/cloudConfigFiles
+
+eureka:
+  instance:
+#    hostname: localhost
+    hostname: ms-discovery
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka
+
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+info:
+  name: Serviço para configuração externalizada do sistema distribuído da aplicação.
+  author: Grupo 03
+  severity: Alto

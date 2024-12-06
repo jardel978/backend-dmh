@@ -1,0 +1,13 @@
+server:
+  port: ${PORT_MS_ACCOUNTS:8085}
+
+spring:
+  application:
+    name: ms-accounts
+  config:
+    import: optional:configserver:http://${CONFIG_SERVER_HOST}:8888
+  cloud:
+    config:
+      profile: ${MS_ACCOUNTS_PROFILE:dev}
+
+

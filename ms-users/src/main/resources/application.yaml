@@ -1,0 +1,17 @@
+server:
+  port: ${PORT_MS_USERS:8084}
+
+spring:
+  application:
+    name: ms-users
+  config:
+    import: optional:configserver:http://${CONFIG_SERVER_HOST}:8888
+  cloud:
+    config:
+      profile: ${MS_USERS_PROFILE:dev}
+
+feign:
+  circuitbreaker:
+    enabled: true
+#https://stackoverflow:
+#  com/questions/72421740/spring-micro-services-eureka-client-is-not-registering-with-eureka-server:

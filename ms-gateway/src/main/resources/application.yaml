@@ -1,0 +1,11 @@
+server:
+  port:  ${PORT_MS_GATEWAY:8090}
+
+spring:
+  application:
+    name: ms-gateway
+  config:
+    import: optional:configserver:http://${CONFIG_SERVER_HOST}:8888
+  cloud:
+    config:
+      profile: ${MS_GATEWAY_PROFILE:dev}
